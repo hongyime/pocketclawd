@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # Ensure we have the actual PR commit
           ref: ${{ github.event.pull_request.head.sha }}
@@ -57,7 +57,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # Ensure we have the actual PR commit
           ref: ${{ github.event.pull_request.head.sha }}
@@ -84,7 +84,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # Ensure we have the actual PR commit
           ref: ${{ github.event.pull_request.head.sha }}
