@@ -74,7 +74,7 @@
     "kleur": "^4.1.5",
     "mailparser": "3.7.4",
     "mammoth": "1.11.0",
-    "pdf-parse": "1.1.1",
+    "pdf-parse": "2.4.5",
     "pdfkit": "^0.18.0",
     "pg": "^8.13.0",
     "pino": "9.6.0",
