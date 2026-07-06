@@ -58,7 +58,7 @@ jobs:
         run: echo "tag=${GITHUB_SHA::8}" >> "$GITHUB_OUTPUT"
       - uses: docker/setup-buildx-action@v3
       - name: Build & push orchestrator
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile.orchestrator
@@ -70,7 +70,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Build & push agent
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: container/sub-agent
           file: container/sub-agent/Dockerfile.production

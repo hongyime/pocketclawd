@@ -143,7 +143,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build & push orchestrator image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile.orchestrator
@@ -155,7 +155,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Build & push agent image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: container/sub-agent
           file: container/sub-agent/Dockerfile.production
