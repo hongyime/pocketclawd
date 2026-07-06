@@ -5,7 +5,7 @@
 # ==============================================================================
 # Stage 1: Install dependencies
 # ==============================================================================
-FROM public.ecr.aws/docker/library/node:22-alpine AS deps
+FROM public.ecr.aws/docker/library/node:26-alpine AS deps
 
 # Build tools needed for native modules (better-sqlite3, etc.)
 RUN apk add --no-cache python3 make g++
@@ -26,7 +26,7 @@ RUN pnpm install --frozen-lockfile
 # ==============================================================================
 # Stage 2: Build TypeScript
 # ==============================================================================
-FROM public.ecr.aws/docker/library/node:22-alpine AS build
+FROM public.ecr.aws/docker/library/node:26-alpine AS build
 
 RUN corepack enable && corepack prepare pnpm@10.33.0 --activate
 
@@ -51,7 +51,7 @@ RUN pnpm install --prod --ignore-scripts --frozen-lockfile
 # ==============================================================================
 # Stage 3: Production image — use slim (glibc) so mounted Docker binary works
 # ==============================================================================
-FROM public.ecr.aws/docker/library/node:20-slim AS production
+FROM public.ecr.aws/docker/library/node:26-slim AS production
 
 # Install curl for health check and tini for signal handling
 RUN apt-get update && apt-get install -y --no-install-recommends curl tini && rm -rf /var/lib/apt/lists/*
