@@ -60,7 +60,7 @@
     "@opensearch-project/opensearch": "^3.6.0",
     "@slack/web-api": "7.8.0",
     "@types/pdfkit": "^0.17.6",
-    "@whiskeysockets/baileys": "7.0.0-rc.9",
+    "@whiskeysockets/baileys": "7.0.0-rc13",
     "better-sqlite3": "^12.10.0",
     "chat": "4.27.0",
     "chokidar": "4.0.3",
