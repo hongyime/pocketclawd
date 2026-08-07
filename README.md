@@ -67,7 +67,7 @@ docs/                   All documentation + diagrams/
 ## Quickstart (dev)
 
 ```bash
-git clone git@github.com:bryanseah234/pocketclawd.git
+git clone git@github.com:hongyime/pocketclawd.git
 cd pocketclawd
 cp .env.example .env      # AWS creds, bot tokens, Redis URL
 pnpm install && pnpm build && pnpm start
