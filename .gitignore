@@ -300,3 +300,7 @@ skills/
 skills-lock.json
 docs/
 templates/
+.env.*
+.venv/
+.next/
+coverage/

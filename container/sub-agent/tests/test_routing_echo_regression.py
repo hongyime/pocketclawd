@@ -38,7 +38,7 @@ def _echo(inbound: InboundMessage, response: AgentResponse) -> AgentResponse:
 def _inbound(meta: dict) -> InboundMessage:
     return InboundMessage(
         message_id="test-msg-id",
-        user_id="6592348112",
+        user_id="00000000",
         content="hello",
         timestamp="2026-05-28T00:00:00Z",
         metadata=meta,
@@ -48,7 +48,7 @@ def _inbound(meta: dict) -> InboundMessage:
 def _response(meta: dict | None = None) -> AgentResponse:
     return AgentResponse(
         message_id="test-msg-id",
-        user_id="6592348112",
+        user_id="00000000",
         content="reply",
         timestamp="2026-05-28T00:00:00Z",
         metadata=meta or {},
@@ -58,9 +58,9 @@ def _response(meta: dict | None = None) -> AgentResponse:
 @pytest.mark.parametrize(
     "inbound_meta",
     [
-        {"channelType": "whatsapp", "platformId": "6592348112@s.whatsapp.net", "threadId": "t1", "kind": "text"},
+        {"channelType": "whatsapp", "platformId": "00000000@s.whatsapp.net", "threadId": "t1", "kind": "text"},
         {"channelType": "telegram", "platformId": "12345", "kind": "text"},
-        {"channelType": "whatsapp", "platformId": "6592348112@s.whatsapp.net"},
+        {"channelType": "whatsapp", "platformId": "00000000@s.whatsapp.net"},
     ],
 )
 def test_all_routing_keys_propagate_when_present(inbound_meta):

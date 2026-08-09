@@ -90,3 +90,7 @@ See [docs/setup.md](docs/setup.md) for full requirements.
 - LLM: Claude Sonnet 4.5 via AWS Bedrock Converse · Embeddings: Titan Embed v2
 - Vector store: OpenSearch Serverless · Cache/queues: ElastiCache Redis 7.1
 - Storage: DynamoDB + S3 · Infra: Terraform, ECS Fargate, ECR, SSM, Secrets Manager
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
