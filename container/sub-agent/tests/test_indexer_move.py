@@ -53,7 +53,7 @@ def _stub_pipeline_modules(monkeypatch):
 
 @pytest.mark.asyncio
 async def test_staging_move_uses_bare_userid_key_and_replaces_tags(monkeypatch):
-    user_id = "wa:6592348112@s.whatsapp.net"
+    user_id = "wa:00000000@s.whatsapp.net"
     filename = "image-1780537939297.jpg"
     s3_key = f"users/{user_id}/staging/wa-3AA34F090D85526BB300/{filename}"
     bucket = "nanoclaw-data-709609992277"
@@ -79,7 +79,7 @@ async def test_staging_move_uses_bare_userid_key_and_replaces_tags(monkeypatch):
             "origin": "upload_worker",
             "corporate": False,
             "channelType": "whatsapp",
-            "platformId": "6592348112@s.whatsapp.net",
+            "platformId": "00000000@s.whatsapp.net",
         },
     }
 

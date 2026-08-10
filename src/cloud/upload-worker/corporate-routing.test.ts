@@ -129,11 +129,11 @@ describe('Upload Worker — corporate routing', () => {
         const { message } = dispatchUpload({
             ...BASE,
             corporate: false,
-            userId: 'wa:6592348112@s.whatsapp.net',
-            s3Key: 'users/wa:6592348112@s.whatsapp.net/staging/wa-3AA34F090D85526BB300/image-1780537939297.jpg',
+            userId: 'wa:00000000@s.whatsapp.net',
+            s3Key: 'users/wa:00000000@s.whatsapp.net/staging/wa-3AA34F090D85526BB300/image-1780537939297.jpg',
         });
         expect(message.payload.s3Key).toBe(
-            'users/wa:6592348112@s.whatsapp.net/staging/wa-3AA34F090D85526BB300/image-1780537939297.jpg',
+            'users/wa:00000000@s.whatsapp.net/staging/wa-3AA34F090D85526BB300/image-1780537939297.jpg',
         );
     });
 
