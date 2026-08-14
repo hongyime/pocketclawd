@@ -271,9 +271,21 @@ test/beta_send.py
 test/full_suite_runner.py
 test/retest2.py
 
+templates/
+.env.*
+.venv/
+.next/
+coverage/
+
 # AI / editor dot directories (managed via sourcerepo)
 .*
 !.github/
+!.agents/
+.agents/*
+!.agents/STATE.md
+!.agents/JOURNAL.md
+!.agents/handoffs/
+!.agents/handoffs/**
 !.gitignore
 !.gitattributes
 !.gitmodules
@@ -299,8 +311,4 @@ test/retest2.py
 skills/
 skills-lock.json
 docs/
-templates/
-.env.*
-.venv/
-.next/
-coverage/
+# End AI / editor dot directories (managed via sourcerepo)
