@@ -22,6 +22,7 @@ Admin-gated approval flow for agent self-modification and OneCLI credential acce
 ### Core integration
 
 The module depends on host-side infra but does not reach into core decision paths beyond the registered hooks:
+
 - `buildAgentGroupImage`, `killContainer` from container-runner (image rebuilds)
 - `updateContainerConfig` from container-config (apt/npm/mcp edits)
 - `pickApprover`, `pickApprovalDelivery` from access

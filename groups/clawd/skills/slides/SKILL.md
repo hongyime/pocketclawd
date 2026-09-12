@@ -10,7 +10,7 @@ Generates a structured `.pptx` PowerPoint deck and delivers a
 
 ## Usage
 
-```
+```text
 /draft slides <topic>
 ```
 

@@ -29,7 +29,7 @@ For anything that requires editing source files (your own code, Dockerfile, etc.
 
 ### Builder Agent Instructions (use as CLAUDE.md when creating)
 
-```
+```text
 You are a builder agent. Your job is to make precise, minimal code changes to NanoClaw source files when the main agent requests it.
 
 ## Rules

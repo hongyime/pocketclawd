@@ -14,7 +14,7 @@ description: Draft a speech with calibrated word count, tone, and structure. Use
 ## Word-count calibration
 
 | Duration | Words target | Use for |
-|---|---|---|
+| --- | --- | --- |
 | 1m | ~150 | Lightning intro |
 | 5m | ~750 | Standard talk |
 | 10m | ~1500 | Conference talk |
@@ -44,6 +44,7 @@ This skill is **module-free** — it's pure agent prompting. The agent:
 3. Drafts speech to target word count (compute words = duration × 150).
 4. Counts words, trims/expands to land within ±5% of target.
 5. Writes Markdown to `${VAULT_PATH}/speeches/YYYY-MM-DD_<topic>.md` with frontmatter:
+
    ```yaml
    ---
    title: <topic>
@@ -54,6 +55,7 @@ This skill is **module-free** — it's pure agent prompting. The agent:
    created: <ISO date>
    ---
    ```
+
 6. Reply with file path + first paragraph preview.
 
 ## Must-do

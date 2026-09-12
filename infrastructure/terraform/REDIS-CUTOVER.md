@@ -6,11 +6,13 @@ or endpoint change).
 ## Before cutover
 
 1. Confirm new cluster is in AVAILABLE state:
+
    ```bash
    aws elasticache describe-cache-clusters      --cache-cluster-id nanoclaw-redis-new      --profile clawd-prod --region ap-southeast-1      --query 'CacheClusters[0].CacheClusterStatus'
    ```
 
 2. Check current queue depths on the old cluster. Wait for queues to drain:
+
    ```bash
    # Via SSM on EC2
    redis-cli -u $REDIS_URL llen queue:agent:dispatch
@@ -18,6 +20,7 @@ or endpoint change).
    ```
 
 3. Put the orchestrator in maintenance mode (stop accepting new messages):
+
    ```bash
    sudo systemctl stop nanoclaw
    ```
@@ -28,11 +31,13 @@ or endpoint change).
    read -> set REDIS_URL to new endpoint -> write back
 
 5. Restart orchestrator:
+
    ```bash
    sudo systemctl start nanoclaw
    ```
 
 6. Trigger ECS force-redeploy so sub-agent picks up new REDIS_URL:
+
    ```bash
    aws ecs update-service      --cluster nanoclaw-cluster --service nanoclaw-sub-agent      --force-new-deployment      --profile clawd-prod --region ap-southeast-1
    ```

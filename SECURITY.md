@@ -4,9 +4,10 @@
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Email: cadence.linardi@gmail.com
+Email: <cadence.linardi@gmail.com>
 
 Please include:
+
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -23,9 +24,10 @@ You will receive a response within 48 hours. Please allow reasonable time to pat
 ### Scope
 
 The GH_PAT (GitHub Personal Access Token) requires:
-- epo — full control of private repositories
-- workflow — update GitHub Actions workflows
-- dmin:repo_hook — manage repository hooks
+
+- `repo` — full control of private repositories
+- `workflow` — update GitHub Actions workflows
+- `admin:repo_hook` — manage repository hooks
 
 ### Blast Radius
 

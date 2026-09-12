@@ -4,7 +4,7 @@ The `ncl` command is available at `/usr/local/bin/ncl`. It lets you query and mo
 
 ### Usage
 
-```
+```text
 ncl <resource> <verb> [--flags]
 ncl <resource> help
 ncl help
@@ -19,7 +19,7 @@ Your CLI access may be scoped. Run `ncl help` to see which resources are availab
 Run `ncl help` for the full list. Common resources:
 
 | Resource | Verbs | What it is |
-|----------|-------|------------|
+| ---------- | ------- | ------------ |
 | groups | list, get, create, update, delete, restart, config get/update, config add-mcp-server/remove-mcp-server, config add-package/remove-package | Agent groups (workspace, personality, container config) |
 | sessions | list, get | Active sessions (read-only) |
 | destinations | list, add, remove | Where an agent group can send messages |

@@ -6,7 +6,7 @@ Three fire-and-forget tools change your container image or config. Each sends an
 
 Add apt and/or npm packages to your container image. On approval, the config is updated AND the image is rebuilt in the same step — you'll get a follow-up prompt ~5s after rebuild telling you to verify the packages are available.
 
-```
+```text
 install_packages({
   apt: ["ripgrep", "jq"],              // names only, no version specs or flags
   npm: ["@anthropic-ai/sdk"],          // global install
@@ -22,7 +22,7 @@ install_packages({
 
 Wire an EXISTING third-party MCP server into your runtime config. You must already know the exact `command` and `args`.
 
-```
+```text
 add_mcp_server({
   name: "github",
   command: "npx",

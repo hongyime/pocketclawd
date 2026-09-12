@@ -7,7 +7,7 @@ description: Show Clawd's audit log entries for a date.
 
 Usage:
 
-```
+```text
 /audit             # default: today
 /audit yesterday   # last 24h
 /audit 2026-05-20  # specific date

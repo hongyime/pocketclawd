@@ -5,7 +5,7 @@ description: Connect Google or Microsoft so Clawd can include your calendar and 
 
 # /connect — link a cloud account
 
-```
+```text
 /connect google
 /connect microsoft
 /disconnect google
@@ -35,6 +35,7 @@ Removes stored tokens for that service. The next morning briefing will skip it.
 ## `/connect status`  (or `/auth status`)
 
 Shows which integrations are active for your account:
+
 - `google: ✅` — tokens present in Redis
 - `microsoft: ✅` — tokens present in Redis
 

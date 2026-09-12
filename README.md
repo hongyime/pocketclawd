@@ -23,7 +23,7 @@ No app to download — works in the WhatsApp or Telegram chat you already have.
 ## Live system
 
 - AWS ap-southeast-1 / account 709609992277
-- Admin: http://3.0.132.150:3000/admin
+- Admin: <http://3.0.132.150:3000/admin>
 - WhatsApp + Telegram: `@pocketclawd234bot` (Baileys / long-poll)
 - Orchestrator: EC2 `i-0f9cd20350cfdc1a6`, Node.js port 3000
 - Sub-agent: ECS Fargate, cluster `nanoclaw-cluster`, service `nanoclaw-sub-agent`
@@ -31,7 +31,7 @@ No app to download — works in the WhatsApp or Telegram chat you already have.
 ## Documentation
 
 | # | Doc | Audience |
-|---|---|---|
+| --- | --- | --- |
 | 00 | [Overview](docs/00-overview.md) | everyone (start here) |
 | 01 | [Architecture](docs/01-architecture.md) | engineers |
 | 02 | [AI Sub-agent](docs/02-sub-agent.md) | engineers |
@@ -50,7 +50,7 @@ Diagrams (vector SVG, zoom freely) live in
 
 ## Repo layout
 
-```
+```text
 src/                    Orchestrator (Node.js / TypeScript)
   channels/             WhatsApp and Telegram adapters
   cloud/                Redis queue, admin dashboard, data gateway, scheduler
@@ -98,9 +98,12 @@ skips backend dependencies, so homepage previews do not run the backend's
 Node-version guard or install its native database, messaging and cloud packages.
 The backend still uses the separate development and hosting setup above.
 
-Maintenance validation (2026-09-12): the public files and backend package
-configuration are unchanged. Preview and production deployment verification
-are pending for this configuration change.
+Maintenance validation (2026-09-12): the preview successfully skips backend
+installation, and the public files and backend package configuration are
+unchanged. The Markdown workflow's missing historical configuration is restored;
+all 59 Markdown files pass its original rules after formatting repairs. Literal
+command prefixes and examples retain their meaning. Production verification
+follows the final hosted checks.
 
 ## License
 

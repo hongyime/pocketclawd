@@ -11,11 +11,13 @@ roll out incrementally (schema change, breaking config change, etc.).
 ## Steps
 
 1. Stand up the green service alongside blue:
+
    ```bash
    aws ecs update-service      --cluster nanoclaw-cluster      --service nanoclaw-sub-agent-green      --task-definition nanoclaw-sub-agent:<GREEN_REV>      --desired-count 2      --profile clawd-prod --region ap-southeast-1
    ```
 
 2. Wait for green tasks to reach RUNNING state:
+
    ```bash
    aws ecs wait services-stable      --cluster nanoclaw-cluster      --services nanoclaw-sub-agent-green      --profile clawd-prod --region ap-southeast-1
    ```
@@ -23,6 +25,7 @@ roll out incrementally (schema change, breaking config change, etc.).
 3. Send a test message through the admin dashboard to confirm green is healthy.
 
 4. Drain blue by setting desired count to 0:
+
    ```bash
    aws ecs update-service      --cluster nanoclaw-cluster      --service nanoclaw-sub-agent      --desired-count 0      --profile clawd-prod --region ap-southeast-1
    ```

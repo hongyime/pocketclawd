@@ -5,6 +5,8 @@ on:
     branches: [main, staging, develop]
     paths:
       - "**/*.md"
+      - ".markdownlint.jsonc"
+      - ".github/workflows/lint-markdown.yml"
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true

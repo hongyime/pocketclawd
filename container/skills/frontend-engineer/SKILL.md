@@ -24,11 +24,13 @@ Every frontend task follows this sequence. Do not skip steps.
 ### 2. Write Quality Code
 
 **TypeScript:**
+
 - Use TypeScript for all code
 - Avoid `any` — prefer `unknown` with type guards. If `any` is genuinely the simplest correct approach (e.g. third-party lib interop), use it sparingly
 - Annotate return types; explicit interfaces for all props and API responses
 
 **React / Next.js (when using App Router):**
+
 - Server Components by default — minimize `use client`, `useEffect`, `setState`
 - Never define components inside other components (causes remounts, lost focus, broken state)
 - Use `Suspense` with fallback for client components
@@ -37,17 +39,20 @@ Every frontend task follows this sequence. Do not skip steps.
 - Use `Promise.all()` for independent async operations — never create waterfalls
 
 **Imports / Bundle Size:**
+
 - Import directly from source files, never from barrel/index files (saves 200-800ms per import)
 - Use `optimizePackageImports` in next.config for icon/UI libraries (lucide-react, @mui/material, etc.)
 - Defer third-party scripts; lazy load below-the-fold content
 
 **HTML:**
+
 - Semantic tags: `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>` — not div soup
 - Every `<img>` gets an `alt` attribute; use Next.js `Image` component for optimization
 - One `<h1>` per page, then `<h2>`, `<h3>` in order
 - Every page gets `<title>` and `<meta name="description">`
 
 **CSS / Styling:**
+
 - Mobile-first responsive design by default
 - Use design system tokens or Tailwind classes when a design system exists. For standalone projects, establish consistent values early and reuse them
 - Prefer the design scale over arbitrary values — but if the design genuinely calls for a specific value, use it
@@ -56,6 +61,7 @@ Every frontend task follows this sequence. Do not skip steps.
 - Aim for 4.5:1 contrast ratio for text (WCAG AA)
 
 **Consistency:**
+
 - Similar pages must follow the same layout pattern
 - Loading states are consistent everywhere (don't mix spinners, skeletons, and shimmer)
 - Error states follow one pattern across the app
@@ -151,6 +157,7 @@ Keep iterating until it looks professional. If after 3 iterations the same issue
 ## Reporting
 
 When reporting results, always include:
+
 - What you built (tech stack, pages, features)
 - The live URL (if deployed)
 - Screenshots of the final result (desktop minimum)

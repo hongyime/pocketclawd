@@ -51,7 +51,7 @@ Surface counts only — never list filenames (privacy in chat history).
 Compute from the env file:
 
 | Source | Live if | Parked if |
-|---|---|---|
+| --- | --- | --- |
 | Google (Gmail / GCal / GContacts) | `~/.clawd/secrets/google_token.json` exists OR `CLAWD_SECRETS_DIR/google_token.json` exists | else |
 | Microsoft (Outlook x3) | `MS_CLIENT_ID` is set AND non-empty | else |
 | GitHub (PRs / commits / issues) | `GITHUB_PAT` set | else |
@@ -66,7 +66,7 @@ Produce a compact message that fits in one Telegram bubble (≤2000 chars). Use 
 
 ### Example reply (Telegram)
 
-```
+```text
 *Clawd status*
 🧠 Memory: 204 insights
 📂 Vault: 1 wiki · 1 minutes · 1 research · 1 slides · 0 speeches
@@ -78,7 +78,7 @@ Parked: Outlook ⏸ ×3 · Slack ⏸ ×1
 
 ### Example reply (WhatsApp)
 
-```
+```text
 Clawd status
 - Memory: 204 insights
 - Vault: wiki=1 minutes=1 research=1 slides=1 speeches=0
