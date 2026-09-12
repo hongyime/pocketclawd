@@ -1,5 +1,5 @@
 {
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "installCommand": "echo Static homepage: no backend dependencies to install",
   "buildCommand": "echo \"Skipping backend build - deploying static public directory\"",
   "outputDirectory": "public",
   "headers": [

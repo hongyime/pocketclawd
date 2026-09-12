@@ -91,6 +91,17 @@ See [docs/setup.md](docs/setup.md) for full requirements.
 - Vector store: OpenSearch Serverless · Cache/queues: ElastiCache Redis 7.1
 - Storage: DynamoDB + S3 · Infra: Terraform, ECS Fargate, ECR, SSM, Secrets Manager
 
+## Vercel homepage
+
+Vercel serves the existing files in `public/`. Its install step deliberately
+skips backend dependencies, so homepage previews do not run the backend's
+Node-version guard or install its native database, messaging and cloud packages.
+The backend still uses the separate development and hosting setup above.
+
+Maintenance validation (2026-09-12): the public files and backend package
+configuration are unchanged. Preview and production deployment verification
+are pending for this configuration change.
+
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
