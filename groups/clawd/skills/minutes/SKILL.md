@@ -10,7 +10,7 @@ and delivers a **presigned S3 download link** (valid 1 hour).
 
 ## Usage
 
-```
+```text
 /draft minutes <meeting name or topic>
 ```
 

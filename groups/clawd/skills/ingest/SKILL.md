@@ -5,7 +5,7 @@ description: Status of the cloud-ingestion pipeline (Gmail / Outlook). Runs auto
 
 # /ingest — cloud ingestion status
 
-```
+```text
 /ingest
 ```
 

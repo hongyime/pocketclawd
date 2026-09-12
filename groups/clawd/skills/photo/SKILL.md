@@ -7,13 +7,13 @@ description: Manually store a photo description in the knowledge base (used when
 
 Usage:
 
-```
+```text
 /photo <description>
 ```
 
 Action:
 
-1. Take everything after `/photo ` as the description text.
+1. Take everything after `/photo` and its following space as the description text.
 2. Call the MCP tool `kb_remember` with:
    - `text`: the description, verbatim
    - `source`: `"manual-photo"` (distinguishes manual entry from the host-side `photo` source used by the auto-pipeline)

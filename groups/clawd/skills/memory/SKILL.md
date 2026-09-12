@@ -7,13 +7,13 @@ description: Manually save a fact to Clawd's persistent memory.
 
 Usage:
 
-```
+```text
 /memory <fact>
 ```
 
 Action:
 
-1. Take everything after the `/memory ` prefix as the fact text.
+1. Take everything after the `/memory` prefix and its following space as the fact text.
 2. Call the MCP tool `kb_remember` with:
    - `text`: the fact, verbatim
    - `source`: `"chat"` (it came from a direct user instruction)

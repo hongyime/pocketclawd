@@ -19,7 +19,7 @@ Before any Vercel operation, verify auth:
 vercel whoami --token placeholder
 ```
 
-If this fails with an auth error, ask the user to add a Vercel token to OneCLI. They can create one at https://vercel.com/account/tokens and register it via `onecli secrets create` on the host. Once added, retry `vercel whoami`.
+If this fails with an auth error, ask the user to add a Vercel token to OneCLI. They can create one at <https://vercel.com/account/tokens> and register it via `onecli secrets create` on the host. Once added, retry `vercel whoami`.
 
 ## Deploying
 
@@ -81,7 +81,7 @@ echo "value" | vercel env add VAR_NAME production --token placeholder
 ## Common Errors
 
 | Error | Fix |
-|-------|-----|
+| ------- | ----- |
 | `Error: No framework detected` | Ensure the project has a `package.json` with a `build` script, or set the framework in `vercel.json` |
 | `Error: Rate limited` | Wait and retry. Don't loop — report to user |
 | `Error: You have reached your project limit` | User needs to upgrade Vercel plan or delete unused projects |
@@ -94,7 +94,7 @@ When asked to **build, create, or redesign** a website or web app, do NOT build 
 
 **Step 1 — Create the agent** (skip if you already have a "frontend-engineer" destination):
 
-```
+```text
 create_agent({
   name: "Frontend Engineer",
   instructions: "You are a dedicated frontend engineer. Your frontend-engineer skill has your full workflow. Build what is requested, test it visually with agent-browser, deploy to Vercel, and send back the live URL + screenshots to your parent agent when done."
@@ -103,7 +103,7 @@ create_agent({
 
 **Step 2 — Send the build request** (MANDATORY — do this immediately after step 1):
 
-```
+```text
 send_message(to: "frontend-engineer", text: "<full description of what to build, including design requirements, content, colors, and any assets>")
 ```
 
@@ -112,6 +112,7 @@ send_message(to: "frontend-engineer", text: "<full description of what to build,
 After sending, tell the user you've handed it off and will share the result when it comes back. The Frontend Engineer will send you the live URL + screenshots when done — forward those to the user.
 
 **When to delegate vs do it yourself:**
+
 - **Delegate**: building new sites, redesigns, multi-page apps, anything that needs visual testing
 - **Do yourself**: simple `vercel deploy` of an existing project, checking deployment status, managing domains/env vars
 

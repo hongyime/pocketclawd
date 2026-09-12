@@ -7,13 +7,13 @@ description: Search Clawd's memory for facts related to a query.
 
 Usage:
 
-```
+```text
 /recall <query>
 ```
 
 Action:
 
-1. Take everything after `/recall ` as the search query.
+1. Take everything after `/recall` and its following space as the search query.
 2. Call the MCP tool `kb_recall` with:
    - `query`: the user's query, verbatim
    - `k`: 5 (the default — bump to 10 if the query is broad, e.g. "what do you know about Caroline")

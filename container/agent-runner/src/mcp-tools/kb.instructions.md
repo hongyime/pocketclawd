@@ -8,7 +8,7 @@ These tools are restricted to the **clawd agent group** — they will refuse fro
 
 Save an insight whenever the user shares something durable that you'll want to surface again later — preferences, decisions, recurring people/places/projects, dates, choices, opinions. Prefer one focused fact per call (the embedding is per-row), not a paragraph dump.
 
-```
+```text
 kb_remember(text="Bryan's wife Caroline is allergic to peanuts.",
             source="chat",
             entities=["Caroline"],
@@ -23,7 +23,7 @@ Do **not** write trivia, single-turn task state, or things he obviously already 
 
 Before answering anything that references past context — "as I told you", "remember when", "what was that thing about X" — call `kb_recall` first. It does semantic search, so phrase the query the way the user would, not the way the insight was originally stored.
 
-```
+```text
 kb_recall(query="what's Caroline allergic to", k=5)
 ```
 

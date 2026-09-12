@@ -26,7 +26,7 @@ terraform test -verbose
 ## What These Tests Validate
 
 | Test | Purpose |
-|------|---------|
+| ------ | --------- |
 | `plan_succeeds_with_valid_config` | VPC configuration resolves correctly |
 | `dynamodb_tables_configured` | All DynamoDB tables have correct keys and billing |
 | `s3_security_configured` | S3 bucket blocks public access |

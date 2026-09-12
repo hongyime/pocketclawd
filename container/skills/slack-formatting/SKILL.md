@@ -10,6 +10,7 @@ When responding to Slack channels, use Slack's mrkdwn syntax instead of standard
 ## How to detect Slack context
 
 Check your group folder name or workspace path:
+
 - Folder starts with `slack_` (e.g., `slack_engineering`, `slack_general`)
 - Or check `/workspace/group/` path for `slack_` prefix
 
@@ -18,16 +19,16 @@ Check your group folder name or workspace path:
 ### Text styles
 
 | Style | Syntax | Example |
-|-------|--------|---------|
+| ------- | -------- | --------- |
 | Bold | `*text*` | *bold text* |
-| Italic | `_text_` | _italic text_ |
+| Italic | `_text_` | `_italic text_` |
 | Strikethrough | `~text~` | ~strikethrough~ |
 | Code (inline) | `` `code` `` | `inline code` |
 | Code block | ` ```code``` ` | Multi-line code |
 
 ### Links and mentions
 
-```
+```text
 <https://example.com|Link text>     # Named link
 <https://example.com>                # Auto-linked URL
 <@U1234567890>                       # Mention user by ID
@@ -40,17 +41,17 @@ Check your group folder name or workspace path:
 
 Slack supports simple bullet lists but NOT numbered lists:
 
-```
+```text
 • First item
 • Second item
 • Third item
 ```
 
-Use `•` (bullet character) or `- ` or `* ` for bullets.
+Use `•` (bullet character), `-` or `*` followed by a space for bullets.
 
 ### Block quotes
 
-```
+```text
 > This is a block quote
 > It can span multiple lines
 ```
@@ -70,7 +71,7 @@ Use standard emoji shortcodes: `:white_check_mark:`, `:x:`, `:rocket:`, `:tada:`
 
 ## Example message
 
-```
+```text
 *Daily Standup Summary*
 
 _March 21, 2026_

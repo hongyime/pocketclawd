@@ -7,6 +7,7 @@ The two tools here solve different problems: `ask_user_question` forces a decisi
 `mcp__nanoclaw__ask_user_question({ title, question, options, timeout? })` presents the user with a set of choices and **blocks your turn** until they tap one or the timeout expires (default: 300 seconds). Returns their chosen value.
 
 `options` can be plain strings or `{ label, selectedLabel?, value? }` objects:
+
 - `label` — the button text shown before selection
 - `selectedLabel` — the text shown on the button *after* selection (useful for confirmations, e.g. `"✓ Confirmed"`)
 - `value` — the string returned to you when that option is chosen (defaults to `label`)

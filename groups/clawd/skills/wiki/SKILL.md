@@ -12,7 +12,7 @@ drawn from the local knowledge base via `kb_recall`.
 
 1. Call `kb_recall(query=<topic>, k=15)` to gather sources.
 2. If fewer than 3 sources found: reply "Not enough in my knowledge base on
-   \"<topic>\" yet — try ingesting more via /ingest." and stop.
+   \"`<topic>`\" yet — try ingesting more via /ingest." and stop.
 3. Synthesise a wiki-style summary in chat:
    - **Overview** (1-2 paragraphs from the strongest sources)
    - **Key facts** (bulleted, each cited with the source)

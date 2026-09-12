@@ -5,6 +5,7 @@
 This is NanoClaw v2, a ground-up rewrite with breaking changes throughout. It cannot be merged into an existing v1 install. Attempting to resolve the conflicts by hand, run builds, or "fix" anything will corrupt the user's install and burn tokens for no result.
 
 **Do this instead:**
+
 1. Abort the merge: `git merge --abort` (or `git reset --hard ORIG_HEAD` if the merge already completed).
 2. Tell the user, verbatim: *"This is the v2 rewrite — it can't be merged into your existing install. Exit Claude Code (or open a separate terminal) and run `bash migrate-v2.sh` from the shell."*
 3. Wait for the user to confirm before doing anything else. Do not run the migration script yourself — it requires an interactive terminal and cannot be run from within Claude Code.
@@ -25,7 +26,7 @@ The host is a single Node process that orchestrates per-session agent containers
 
 ## Entity Model
 
-```
+```text
 users (id "<channel>:<handle>", kind, display_name)
 user_roles (user_id, role, agent_group_id)       — owner | admin (global or scoped)
 agent_group_members (user_id, agent_group_id)    — unprivileged access gate
@@ -58,7 +59,7 @@ For ad-hoc queries from skills or scripts, use the in-tree wrapper rather than t
 ## Key Files
 
 | File | Purpose |
-|------|---------|
+| ------ | --------- |
 | `src/index.ts` | Entry point: init DB, migrations, channel adapters, delivery polls, sweep, shutdown |
 | `src/router.ts` | Inbound routing: messaging group → agent group → session → `inbound.db` → wake |
 | `src/delivery.ts` | Polls `outbound.db`, delivers via adapter, handles system actions (schedule, approvals, etc.) |
@@ -88,14 +89,14 @@ For ad-hoc queries from skills or scripts, use the in-tree wrapper rather than t
 
 `ncl` queries and modifies the central DB — agent groups, messaging groups, wirings, users, roles, and more. On the host it connects via Unix socket (`src/cli/socket-server.ts`); inside containers it uses the session DB transport (`container/agent-runner/src/cli/ncl.ts`).
 
-```
+```text
 ncl <resource> <verb> [<id>] [--flags]
 ncl <resource> help
 ncl help
 ```
 
 | Resource | Verbs | What it is |
-|----------|-------|------------|
+| ---------- | ------- | ------------ |
 | groups | list, get, create, update, delete, restart, config get/update, config add-mcp-server/remove-mcp-server, config add-package/remove-package | Agent groups (workspace, personality, container config) |
 | messaging-groups | list, get, create, update, delete | A single chat/channel on one platform |
 | wirings | list, get, create, update, delete | Links a messaging group to an agent group (session mode, triggers) |
@@ -134,7 +135,7 @@ Per-agent-group container runtime config (provider, model, packages, MCP servers
 **`cli_scope`** — controls what the agent can do with `ncl` from inside the container:
 
 | Value | Behavior |
-|-------|----------|
+| ------- | ---------- |
 | `disabled` | Agent never learns about ncl (instructions excluded from CLAUDE.md). Host dispatch rejects any `cli_request`. |
 | `group` (default) | Agent can access `groups`, `sessions`, `destinations`, `members` only, scoped to its own agent group. `--id` and group args are auto-filled. Cross-group access rejected. `cli_scope` changes blocked. |
 | `global` | Unrestricted. Set automatically for owner agent groups via `init-first-agent`. |
@@ -198,7 +199,7 @@ Four types of skills. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full taxono
 - **Container skills** — loaded inside agent containers at runtime (`container/skills/`: `onecli-gateway`, `welcome`, `self-customize`, `agent-browser`, `slack-formatting`).
 
 | Skill | When to Use |
-|-------|-------------|
+| ------- | ------------- |
 | `/setup` | First-time install, auth, service config |
 | `/init-first-agent` | Bootstrap the first DM-wired agent (channel pick → identity → wire → welcome DM) |
 | `/manage-channels` | Wire channels to agent groups with isolation level decisions |
@@ -241,6 +242,7 @@ cd container/agent-runner && bun test      # Container tests (bun:test)
 Container typecheck is a separate tsconfig — if you edit `container/agent-runner/src/`, run `pnpm exec tsc -p container/agent-runner/tsconfig.json --noEmit` from root (or `bun run typecheck` from `container/agent-runner/`).
 
 Service management:
+
 ```bash
 # macOS (launchd)
 launchctl load   ~/Library/LaunchAgents/com.nanoclaw.plist
@@ -256,7 +258,7 @@ systemctl --user start|stop|restart nanoclaw
 Check these first when something goes wrong:
 
 | What | Where |
-|------|-------|
+| ------ | ------- |
 | Host logs | `logs/nanoclaw.error.log` first (delivery failures, crash-loop backoff, warnings), then `logs/nanoclaw.log` for the full routing chain |
 | Setup logs | `logs/setup.log` (overall), `logs/setup-steps/*.log` (per-step: bootstrap, environment, container, onecli, mounts, service, etc.) |
 | Session DBs | `data/v2-sessions/<agent-group>/<session>/` — `inbound.db` (`messages_in`: did the message reach the container?), `outbound.db` (`messages_out`: did the agent produce a response?) |
@@ -268,6 +270,7 @@ Note: container logs are lost after the container exits (`--rm` flag). If the ag
 This project uses pnpm with `minimumReleaseAge: 4320` (3 days) in `pnpm-workspace.yaml`. New package versions must exist on the npm registry for 3 days before pnpm will resolve them.
 
 **Rules — do not bypass without explicit human approval:**
+
 - **`minimumReleaseAgeExclude`**: Never add entries without human sign-off. If a package must bypass the release age gate, the human must approve and the entry must pin the exact version being excluded (e.g. `package@1.2.3`), never a range.
 - **`onlyBuiltDependencies`**: Never add packages to this list without human approval — build scripts execute arbitrary code during install.
 - **`pnpm install --frozen-lockfile`** should be used in CI, automation, and container builds. Never run bare `pnpm install` in those contexts.
@@ -275,7 +278,7 @@ This project uses pnpm with `minimumReleaseAge: 4320` (3 days) in `pnpm-workspac
 ## Docs Index
 
 | Doc | Purpose |
-|-----|---------|
+| ----- | --------- |
 | [docs/architecture.md](docs/architecture.md) | Full architecture writeup |
 | [docs/api-details.md](docs/api-details.md) | Host API + DB schema details |
 | [docs/db.md](docs/db.md) | DB architecture overview: three-DB model, cross-mount rules, readers/writers map |
@@ -323,7 +326,6 @@ launchctl kickstart -k gui/$(id -u)/com.nanoclaw   # macOS
 
 `container/build.sh` reads `INSTALL_CJK_FONTS` from `.env` and passes it through as a Docker build-arg. Without CJK fonts, Chromium-rendered screenshots and PDFs containing CJK text show tofu (empty rectangles) instead of characters.
 
-
 ---
 
 # Clawd
@@ -352,11 +354,11 @@ Architecture follows Vivian Balakrishnan's capture-layer + curation-layer patter
 
 The agent container talks to the host-side `KnowledgeBase` through five MCP tools registered in `container/agent-runner/src/mcp-tools/kb.ts`:
 
-  - `kb_remember(text, source?, source_id?, tags?, entities?, category?, importance?)`
-  - `kb_recall(query, k?, source?, since?)` -> `{ insights: [...] }`
-  - `kb_list_top_entities(limit?)` -> `{ entities: [{ entity, count }, ...] }`
-  - `kb_status()` -> `{ total, topEntities }`
-  - `kb_forget(id)`
+- `kb_remember(text, source?, source_id?, tags?, entities?, category?, importance?)`
+- `kb_recall(query, k?, source?, since?)` -> `{ insights: [...] }`
+- `kb_list_top_entities(limit?)` -> `{ entities: [{ entity, count }, ...] }`
+- `kb_status()` -> `{ total, topEntities }`
+- `kb_forget(id)`
 
 **Transport.** Each tool call writes a `kind='system'` row into `outbound.db` with `content` = `{ action: 'kb_request', request_id, tool, args }`. The host's `delivery.ts` polling loop (independent of agent state) calls `handleKbRequest` (`src/modules/knowledge-base/kb-actions.ts`), executes the tool against `getKnowledgeBase()`, then writes a `kind='system'` row into `inbound.db` with `content` = `{ action: 'kb_response', request_id, ok, result }`. The container's MCP-tool sidecar polls `messages_in` for the matching `request_id` (15s timeout). The agent loop already filters `kind='system'` rows out before the agent sees them, so kb_response rows never enter the agent's prompt — only the sidecar reader picks them up.
 
@@ -371,6 +373,7 @@ The agent container talks to the host-side `KnowledgeBase` through five MCP tool
 **Active deployment: AWS Bedrock in `ap-southeast-1`.** Clawd is deployed on AWS as a multi-user WhatsApp AI assistant. Bedrock is the runtime LLM provider; the agent calls Claude (Sonnet/Haiku/Opus 4.x) via `bedrock-runtime` and Titan v2 for embeddings. See [`docs/AWS-DEPLOYMENT.md`](docs/AWS-DEPLOYMENT.md) for the full procedure and [`docs/aws-resource-inventory.md`](docs/aws-resource-inventory.md) for live resource names.
 
 Live resources (account `709609992277`, region `ap-southeast-1`):
+
 - DynamoDB: `nanoclaw-chat-messages`, `nanoclaw-user-preferences`, `nanoclaw-system-errors`, `nanoclaw-webhook-tokens`
 - S3: `nanoclaw-data-709609992277`
 - OpenSearch Serverless: collection `nanoclaw-documents`
@@ -381,6 +384,7 @@ Live resources (account `709609992277`, region `ap-southeast-1`):
 All runtime config (model id, table names, endpoints, limits) is read from `nanoclaw/app-config` — do **not** hard-code values; resolve them at boot via `secretsmanager:GetSecretValue`. The Kiro spec at `.kiro/specs/nanoclaw-aws-deployment/` is the source of truth for the architecture; the corresponding code lives under `src/cloud/`.
 
 **Legacy / future-option providers:**
+
 - The original NanoClaw v2 Claude Code subscription path is still functional for local-host runs but is no longer the deployed surface.
 - An **Azure** variant of the same architecture (Cosmos DB, AI Search, gpt-4o, Blob Storage) is documented in `nanoclaw-prd.html` as a future build option — kept intentionally as a parallel reference, not the active target.
 

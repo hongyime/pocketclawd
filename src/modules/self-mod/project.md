@@ -24,6 +24,7 @@ the approval handler itself — there is no separate "request rebuild" step.
 ## Dependency
 
 Self-mod depends on the approvals default module for:
+
 - `requestApproval()` to enqueue admin confirmation cards
 - `registerApprovalHandler(action, handler)` to run orchestration on approve
 - `notifyAgent()` to send failure feedback back to the requesting agent

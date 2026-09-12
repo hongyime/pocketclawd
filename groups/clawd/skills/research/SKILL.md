@@ -10,7 +10,7 @@ Synthesises a structured report from the local knowledge base and delivers a
 
 ## Usage
 
-```
+```text
 /draft research <topic>
 ```
 
