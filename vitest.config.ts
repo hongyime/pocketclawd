@@ -84,6 +84,15 @@ export default defineConfig({
         'src/host-sweep.ts',
         // router is the main orchestration loop — integration-only
         'src/router.ts',
+        // setup/platform.ts reads /proc/version, /proc/1/comm, spawns child procs
+        'setup/platform.ts',
+        // db/migrations run idempotent SQL — branch coverage from optional ALTER TABLE blocks
+        // is not meaningful to unit-test; migrations are exercised by integration tests
+        'src/db/migrations/**',
+        // session-db opens per-session SQLite files at runtime paths — integration-only
+        'src/db/session-db.ts',
+        // db/connection.ts — initDb path requires real disk path
+        'src/db/connection.ts',
       ],
     },
   },
