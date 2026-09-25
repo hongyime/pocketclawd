@@ -54,7 +54,7 @@ beforeEach(() => {
   createAgentGroup({ id: 'ag-1', name: 'Test', folder: 'test', agent_provider: null, created_at: now() });
   createMessagingGroup({
     id: 'mg-1', channel_type: 'telegram', platform_id: '111',
-    name: null, is_group: false, unknown_sender_policy: 'allow', created_at: now(), updated_at: now(),
+    name: null, is_group: 0, unknown_sender_policy: 'allow', created_at: now(), updated_at: now(),
   } as never);
 });
 
