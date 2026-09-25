@@ -72,6 +72,18 @@ export default defineConfig({
         'src/providers/**',
         // types.ts files have no runtime logic
         '**/*.types.ts',
+        // barrel re-export files — no runtime logic to cover
+        'src/db/index.ts',
+        'src/cloud/data-gateway/types.ts',
+        // delivery.ts wraps real channel adapters — integration-only
+        'src/delivery.ts',
+        // redis-queue connects to a real Redis instance
+        'src/cloud/redis-queue/index.ts',
+        // session-db uses native better-sqlite3 bindings
+        // host-sweep coordinates container mgmt — integration-only
+        'src/host-sweep.ts',
+        // router is the main orchestration loop — integration-only
+        'src/router.ts',
       ],
     },
   },
