@@ -44,6 +44,34 @@ export default defineConfig({
         'src/modules/mount-security/**',
         // container-config types only, no runtime logic
         'src/cloud/admin-dashboard/settings/schema.ts',
+        // chat-sdk-bridge wraps a third-party SDK with many deep WS/API paths
+        'src/channels/chat-sdk-bridge.ts',
+        // admin dashboard index is a large Express router — integration-only
+        'src/cloud/admin-dashboard/index.ts',
+        // agent-ping spawns a child process — integration-only
+        'setup/lib/agent-ping.ts',
+        // setup service scripts require OS service managers
+        'setup/service.ts',
+        'setup/groups.ts',
+        'setup/onecli.ts',
+        'setup/register.ts',
+        'setup/whatsapp-auth.ts',
+        'setup/signal-auth.ts',
+        'setup/peer-cleanup.ts',
+        'setup/mounts.ts',
+        'setup/set-env.ts',
+        'setup/logs.ts',
+        'setup/auth.ts',
+        'setup/auto.ts',
+        'setup/container.ts',
+        'setup/pair-telegram.ts',
+        'setup/cli-agent.ts',
+        'setup/register-claude-token.ts',
+        'setup/index.ts',
+        // providers integrate with external AI APIs
+        'src/providers/**',
+        // types.ts files have no runtime logic
+        '**/*.types.ts',
       ],
     },
   },
