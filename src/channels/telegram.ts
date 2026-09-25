@@ -18,7 +18,6 @@ import type { ChannelAdapter, ChannelSetup, InboundMessage, OutboundMessage } fr
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN ?? '';
 const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
 const POLL_TIMEOUT = 30; // long-poll seconds per getUpdates call
-const MAX_CONNECTIONS = 1; // single poller
 
 // ── Telegram API helpers ──────────────────────────────────────────────────────
 
