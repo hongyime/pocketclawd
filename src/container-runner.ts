@@ -518,8 +518,8 @@ async function buildContainerArgs(
  * If a real package name ever fails this gate, broaden the regex —
  * never disable it.
  */
-const APT_PACKAGE_NAME = /^[a-zA-Z0-9._+:\/-]+$/;
-const NPM_PACKAGE_NAME = /^@?[a-zA-Z0-9._\/-]+(@[a-zA-Z0-9._-]+)?$/;
+const APT_PACKAGE_NAME = /^[a-zA-Z0-9._+:/-]+$/;
+const NPM_PACKAGE_NAME = /^@?[a-zA-Z0-9._/-]+(@[a-zA-Z0-9._-]+)?$/;
 // Agent group ids are UUIDs in production but defensive whitelist so a
 // custom id can never carry shell metachars into the image tag or
 // Dockerfile filename.
