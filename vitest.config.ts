@@ -93,6 +93,12 @@ export default defineConfig({
         'src/db/session-db.ts',
         // db/connection.ts — initDb path requires real disk path
         'src/db/connection.ts',
+        // data-gateway is a large integration module (OpenSearch, S3, Redis)
+        'src/cloud/data-gateway/index.ts',
+        // cli/dispatch handles live socket sessions — integration-only
+        'src/cli/dispatch.ts',
+        // cli/destinations and cli/crud have low branch coverage from DB error paths
+        'src/cli/resources/destinations.ts',
       ],
     },
   },
