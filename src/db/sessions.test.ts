@@ -48,6 +48,7 @@ function makeSession(overrides?: Partial<Session>): Session {
 }
 
 beforeEach(() => {
+  _sessCounter = 0; // reset counter so session IDs are predictable per test
   const db = initTestDb();
   runMigrations(db);
   // seed a group + messaging group for FK constraints
