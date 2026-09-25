@@ -67,7 +67,7 @@ function createAdapter(): ChannelAdapter {
       // file behind, and net.createServer refuses to bind to an existing path.
       try {
         fs.unlinkSync(sock);
-      } catch (err) {
+      } catch (_err) {
         const e = err as NodeJS.ErrnoException;
         if (e.code !== 'ENOENT') {
           log.warn('Failed to unlink stale CLI socket (will try to bind anyway)', { sock, err });
@@ -83,7 +83,7 @@ function createAdapter(): ChannelAdapter {
           // users can't send into this agent.
           try {
             fs.chmodSync(sock, 0o600);
-          } catch (err) {
+          } catch (_err) {
             log.warn('Failed to chmod CLI socket (continuing)', { sock, err });
           }
           log.info('CLI channel listening', { sock });
@@ -131,7 +131,7 @@ function createAdapter(): ChannelAdapter {
       if (text === null) return undefined;
       try {
         client.write(JSON.stringify({ text }) + '\n');
-      } catch (err) {
+      } catch (_err) {
         log.warn('Failed to write to CLI client', { err });
       }
       return undefined;
@@ -191,7 +191,7 @@ function createAdapter(): ChannelAdapter {
     };
     try {
       payload = JSON.parse(line);
-    } catch (err) {
+    } catch (_err) {
       log.warn('CLI: ignoring non-JSON line from client', { line });
       return;
     }
@@ -222,7 +222,7 @@ function createAdapter(): ChannelAdapter {
       };
       try {
         await config.onInboundEvent(event);
-      } catch (err) {
+      } catch (_err) {
         log.error('CLI: onInboundEvent threw', { err });
       }
       return;
@@ -242,7 +242,7 @@ function createAdapter(): ChannelAdapter {
           senderId: `cli:${PLATFORM_ID}`,
         },
       });
-    } catch (err) {
+    } catch (_err) {
       log.error('CLI: onInbound threw', { err });
     }
   }
