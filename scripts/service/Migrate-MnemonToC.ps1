@@ -17,7 +17,7 @@
     1. Direct-kills the wedged service node + any mnemon orphans
        (does NOT use `schtasks /End` — it dirty-shuts and trips
        the circuit breaker on next start).
-    2. Snapshot-copies X:\ClawdData\mnemon -> C:\Users\bryan\.mnemon-clawd
+    2. Snapshot-copies X:\ClawdData\mnemon -> <user-home>\.mnemon-clawd
     3. Verifies the C: copy (mnemon status → reads insight count).
     4. Deletes circuit-breaker.json (safe to do; we're about to start
        cleanly).
@@ -27,7 +27,7 @@
   Idempotent. Re-runnable. The X: copy is preserved as a backup.
 
 .NOTES
-  .env is already pointing at C:\Users\bryan\.mnemon-clawd — the
+  .env is already pointing at <user-home>\.mnemon-clawd — the
   running service has the OLD path cached because it started before
   the .env change. This script does NOT modify .env.
 #>
@@ -35,7 +35,7 @@
 [CmdletBinding()]
 param(
   [switch]$SkipRestart,
-  [string]$DataDir = 'C:\Users\bryan\.mnemon-clawd'
+  [string]$DataDir = "${env:USERPROFILE}\.mnemon-clawd"
 )
 
 $ErrorActionPreference = 'Stop'
@@ -51,7 +51,7 @@ $repo    = 'X:\01 REPOSITORIES\clawd'
 $srcDir  = 'X:\ClawdData\mnemon'
 $dstDir  = $DataDir
 $cbFile  = Join-Path $repo 'data\circuit-breaker.json'
-$mnBin   = 'C:\Users\bryan\go\bin\mnemon.exe'
+$mnBin   = "${env:USERPROFILE}\go\bin\mnemon.exe"
 
 Write-Host '======================================================'
 Write-Host ' Clawd mnemon migration: X: (exFAT) -> C: (NTFS)'

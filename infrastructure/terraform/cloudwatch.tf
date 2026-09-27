@@ -208,7 +208,7 @@ resource "aws_cloudwatch_metric_alarm" "orchestrator_restarts" {
 }
 
 # ─── Wave 6: SNS subscriptions ───────────────────────────────────────────────
-# Email + SMS to Bryan. Email needs manual confirmation via the link AWS sends.
+# Email and SMS use operator-supplied endpoints. Email needs manual confirmation via the link AWS sends.
 # SMS goes via direct subscription; Singapore (+65) is supported by SNS Standard topic
 # but if it stops working, replace with `aws_pinpoint_sms_voice_v2_phone_number` topic
 # attribution. SMS needs a sandbox-exit request in some regions.

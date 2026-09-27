@@ -82,7 +82,7 @@ WinGet node-v22 path to PATH).
 
 ### Fixture seeded content (so you know what a correct doc/vision answer is)
 
-- clawd_doc.pdf -> codename BLUEHERON, budget 250000 SGD FY2026, lead Bryan,
+- clawd_doc.pdf -> codename BLUEHERON, budget 250000 SGD FY2026, lead the maintainer,
   deadline 30 Sep 2026, risk exFAT symlink.
 - clawd_fixture.txt -> distinctive phrase "PURPLE PANGOLIN PROTOCOL".
 - img_text.png -> "CLAWD VISION TEST", "Total: $42.50 SGD", "Codeword: SCARLET IBIS".
@@ -174,3 +174,5 @@ loop gh-run-watch (300s execute_code cap); poll once per call.
 and the `retest_*.py` / `*.bat` are ad-hoc one-offs from prior sessions. The
 CANONICAL live suite is the `beta_v2_*` set above. Ignore the rest unless
 explicitly resurrecting them.
+
+Machine-specific values in this document use privacy placeholders.

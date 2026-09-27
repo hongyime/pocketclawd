@@ -54,21 +54,25 @@ Memory tools such as cognee or cavemem are optional local aids. Trust
 ## Agent Types and Roles
 
 ### 1. Primary Coding Agent (Cursor/Claude Code)
+
 **Purpose**: Main development assistant for code changes
 **Capabilities**: Full codebase access, file editing, terminal commands
 **Behavior**: Follows all conventions in this file
 
 ### 2. Review Agent (GitHub PR Review)
+
 **Purpose**: Automated code review on pull requests
 **Capabilities**: Read-only access to PR changes
 **Behavior**: Strict adherence to coding standards
 
 ### 3. Documentation Agent
+
 **Purpose**: Maintains and updates documentation
 **Capabilities**: Can modify markdown files
 **Behavior**: Never creates new docs without explicit request
 
 ### 4. Security Agent (TruffleHog, CodeQL)
+
 **Purpose**: Security scanning and vulnerability detection
 **Capabilities**: Full codebase scan
 **Behavior**: Blocks PRs on security issues
@@ -76,24 +80,28 @@ Memory tools such as cognee or cavemem are optional local aids. Trust
 ## Universal Rules (Apply to All Agents)
 
 ### 1. File Operations
+
 - **NEVER** create new markdown files without explicit user request
 - **ALWAYS** update existing documentation when possible
 - **NEVER** delete files without confirmation
 - **ALWAYS** preserve file history and git history
 
 ### 2. Code Style
+
 - Follow language-specific conventions (see skill files)
 - Use consistent naming patterns
 - Keep functions small and focused
 - Add type hints for Python, TypeScript interfaces for JS
 
 ### 3. Git Conventions
+
 - Commit messages: `type: description`
 - Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`, `style`
 - Keep commits atomic and focused
 - Never force push to main branches
 
 ### 4. Communication
+
 - Be concise and direct
 - Explain complex changes briefly
 - Admit uncertainty when present
@@ -102,6 +110,7 @@ Memory tools such as cognee or cavemem are optional local aids. Trust
 ## Repository-Specific Overrides
 
 ### source-repo-code (Template/Source)
+
 - **Purpose**: Source of truth for shared configurations
 - **Special Rules**: Changes here should be synced to all repos
 
@@ -124,20 +133,25 @@ not assume one shared MCP config is read by every agent.
 ## Syncing Strategy
 
 ### Source of Truth
+
 - **Primary**: sourcerepo 仓库作为唯一真源（Skills、MCP、通用配置、仓库设置）
 - **Secondary**: 目标仓库保留仓库特定覆盖（需在 sync 后自行维护）
 
 ### Sync Workflows
-- **仓库设置与通用配置**：[`sync-repo-settings.yml`](<kfile name="sync-repo-settings.yml" path=".github/workflows/sync-repo-settings.yml">.github/workflows/sync-repo-settings.yml</kfile>) 负责传播 GitHub Actions、Dependabot、labels、`AGENTS.md` 等
+
+- **仓库设置与通用配置**：[`sync-repo-settings.yml`](.github/workflows/sync-repo-settings.yml) 负责传播 GitHub Actions、Dependabot、labels、`AGENTS.md` 等
 
 ### Sync Process
+
 1. 在 sourcerepo 中修改通用配置
 2. 推送到 `main` 分支自动触发相应 workflow
 3. workflow 会遍历所有非 archive/fork 仓库，复制变更并提交/开 PR
 4. 定时任务每日/每日执行，覆盖未来新仓库
 
 ### New Repository Setup
+
 当创建新仓库时：
+
 1. 将 sourcerepo 中的配置同步过去（由定时任务或手动触发完成）
 2. 如需仓库特定覆盖，同步后手动维护
 3. Read `AGENTS.md`, then read `.agents/STATE.md` if present
@@ -145,12 +159,14 @@ not assume one shared MCP config is read by every agent.
 ## Maintenance
 
 ### Quarterly Reviews
+
 - Review and update skill files
 - Check for outdated action versions
 - Verify agent behavior consistency
 - Update this configuration as needed
 
 ### Automated Monitoring
+
 - Use Dependabot for dependency updates
 - Use TruffleHog for secret scanning
 - Use custom scripts to detect outdated GitHub Actions
@@ -158,12 +174,14 @@ not assume one shared MCP config is read by every agent.
 ## Troubleshooting
 
 ### Agent Not Following Conventions
+
 1. 检查仓库特定覆盖在 AGENTS.md 中
 2. 检查 `.agents/STATE.md` 中是否有最新任务上下文
 3. 审阅近期约定变更
 4. 从源重新同步配置
 
 ### Sync Failures
+
 1. 使用相应 workflow 的 `workflow_dispatch` 手动触发以观察日志
 2. 检查目标仓库中的 git 冲突
 3. 验证文件权限
