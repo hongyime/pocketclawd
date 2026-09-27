@@ -149,7 +149,6 @@ variable "tags" {
     Project     = "nanoclaw"
     ManagedBy   = "terraform"
     Application = "whatsapp-assistant"
-    Email       = "sowjanya.k@synapxe.sg" # pre-existing live tag, mirrored to keep plan clean
   }
 }
 
@@ -157,13 +156,13 @@ variable "tags" {
 variable "alerts_email" {
   description = "Email to receive CloudWatch alarm notifications via SNS"
   type        = string
-  default     = "shotsbyseah234@gmail.com"
+  # Supply privately with TF_VAR_alerts_email or an untracked variable file.
 }
 
 variable "alerts_sms_phone" {
-  description = "Phone number for SMS alerts (E.164, e.g. +6584731565). Set empty to disable."
+  description = "Phone number for SMS alerts (E.164, international number). Set empty to disable."
   type        = string
-  default     = "+6584731565"
+  # Supply privately with TF_VAR_alerts_sms_phone or an untracked variable file.
 }
 
 # t6-40: Application Load Balancer (zero-downtime HTTP cutover)

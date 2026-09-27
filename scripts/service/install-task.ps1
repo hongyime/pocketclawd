@@ -43,7 +43,7 @@ if (-not $isAdmin) {
 }
 
 # --- 2. Locate Node 22 ------------------------------------------------------
-$node22 = "C:\Users\bryan\AppData\Local\Microsoft\WinGet\Packages\OpenJS.NodeJS.22_Microsoft.Winget.Source_8wekyb3d8bbwe\node-v22.22.3-win-x64\node.exe"
+$node22 = "${env:USERPROFILE}\AppData\Local\Microsoft\WinGet\Packages\OpenJS.NodeJS.22_Microsoft.Winget.Source_8wekyb3d8bbwe\node-v22.22.3-win-x64\node.exe"
 if (Test-Path $node22) {
     $node = $node22
 } else {
@@ -131,7 +131,7 @@ REM Re-run install-task.ps1 to regenerate.
 REM Prepend user-installed binary dirs to PATH so chat-ingest can spawn
 REM mnemon (Go-installed) and similar tools under NT AUTHORITY\SYSTEM,
 REM which does NOT inherit the interactive user's PATH.
-set "PATH=C:\Users\bryan\go\bin;C:\Users\bryan\.local\bin;C:\Users\bryan\AppData\Roaming\npm;C:\Users\bryan\AppData\Local\pnpm;%PATH%"
+set "PATH=${env:USERPROFILE}\go\bin;${env:USERPROFILE}\.local\bin;${env:USERPROFILE}\AppData\Roaming\npm;${env:USERPROFILE}\AppData\Local\pnpm;%PATH%"
 cd /d "$repoRoot"
 "$node" --env-file="$envFile" "$mainScript" 1>>"$stdoutLog" 2>>"$stderrLog"
 "@
