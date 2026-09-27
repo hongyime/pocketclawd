@@ -23,3 +23,7 @@ has been done yet.
 Whoever picks this up next: read the README and recent commit history first,
 since this file has no prior context to build on. Update this file after any
 meaningful work.
+
+## Maintenance verification
+
+2026-09-27: Reviewed maintenance removed optional personal defaults/contact and made Windows helper paths portable. Existing Markdown formatting failures were repaired: the same scoped four-file lint went from 40 findings to 0. The full repository Markdown glob and other exact-head hosted checks remain pending; no deployment or backend activation was performed for this formatting review.
