@@ -7,7 +7,6 @@
 Report vulnerabilities privately using this repository's GitHub **Report a vulnerability** option, when available. Otherwise, open an issue asking for a private reporting channel without sharing vulnerability details.
 
 Please include:
-
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -24,10 +23,9 @@ You will receive a response within 48 hours. Please allow reasonable time to pat
 ### Scope
 
 The GH_PAT (GitHub Personal Access Token) requires:
-
-- `repo` — full control of private repositories
-- `workflow` — update GitHub Actions workflows
-- `admin:repo_hook` — manage repository hooks
+- epo — full control of private repositories
+- workflow — update GitHub Actions workflows
+- dmin:repo_hook — manage repository hooks
 
 ### Blast Radius
 
