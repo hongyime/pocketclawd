@@ -66,7 +66,7 @@ Write-Ok "NSSM found: $nssm"
 # is compiled against NODE_MODULE_VERSION 127 (Node 22), not 147 (Node 26).
 # Always prefer the Node 22 binary if present, even if a newer Node is on
 # PATH for the user's interactive shell.
-$node22 = "C:\Users\bryan\AppData\Local\Microsoft\WinGet\Packages\OpenJS.NodeJS.22_Microsoft.Winget.Source_8wekyb3d8bbwe\node-v22.22.3-win-x64\node.exe"
+$node22 = "${env:USERPROFILE}\AppData\Local\Microsoft\WinGet\Packages\OpenJS.NodeJS.22_Microsoft.Winget.Source_8wekyb3d8bbwe\node-v22.22.3-win-x64\node.exe"
 if (Test-Path $node22) {
     $node = $node22
 } else {
