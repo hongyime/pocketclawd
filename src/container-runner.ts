@@ -3,7 +3,7 @@
  * Spawns agent containers with session folder + agent group folder mounts.
  * The container runs the v2 agent-runner which polls the session DB.
  */
-import { ChildProcess, execSync, spawn, spawnSync } from 'child_process';
+import { ChildProcess, spawn, spawnSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -21,7 +21,7 @@ import {
 } from './config.js';
 import { materializeContainerJson } from './container-config.js';
 import { getContainerConfig } from './db/container-configs.js';
-import { updateContainerConfigScalars, updateContainerConfigJson } from './db/container-configs.js';
+import { updateContainerConfigScalars } from './db/container-configs.js';
 import { CONTAINER_RUNTIME_BIN, hostGatewayArgs, readonlyMountArgs, stopContainer } from './container-runtime.js';
 import { composeGroupClaudeMd } from './claude-md-compose.js';
 import { getAgentGroup } from './db/agent-groups.js';
@@ -429,7 +429,7 @@ async function buildContainerArgs(
   containerName: string,
   agentGroup: AgentGroup,
   containerConfig: import('./container-config.js').ContainerConfig,
-  provider: string,
+  _provider: string,
   providerContribution: ProviderContainerContribution,
   agentIdentifier?: string,
 ): Promise<string[]> {
@@ -518,8 +518,8 @@ async function buildContainerArgs(
  * If a real package name ever fails this gate, broaden the regex —
  * never disable it.
  */
-const APT_PACKAGE_NAME = /^[a-zA-Z0-9._+:\/-]+$/;
-const NPM_PACKAGE_NAME = /^@?[a-zA-Z0-9._\/-]+(@[a-zA-Z0-9._-]+)?$/;
+const APT_PACKAGE_NAME = /^[a-zA-Z0-9._+:/-]+$/;
+const NPM_PACKAGE_NAME = /^@?[a-zA-Z0-9._/-]+(@[a-zA-Z0-9._-]+)?$/;
 // Agent group ids are UUIDs in production but defensive whitelist so a
 // custom id can never carry shell metachars into the image tag or
 // Dockerfile filename.

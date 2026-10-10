@@ -9,10 +9,10 @@ These tools are restricted to the **clawd agent group** — they will refuse fro
 Save an insight whenever the user shares something durable that you'll want to surface again later — preferences, decisions, recurring people/places/projects, dates, choices, opinions. Prefer one focused fact per call (the embedding is per-row), not a paragraph dump.
 
 ```text
-kb_remember(text="the maintainer's wife Caroline is allergic to peanuts.",
+kb_remember(text="Example teammate prefers concise project updates.",
             source="chat",
-            entities=["Caroline"],
-            tags=["health", "family"])
+            entities=["Example teammate"],
+            tags=["communication", "project"])
 ```
 
 `source` is the origin tag — `chat` for things he tells you in conversation, `agent-memory` for your own observations, `photo` / `gmail` / `outlook` are reserved for the host-side ingestion pipelines (don't reuse those). `source_id` is optional — pass a stable id (e.g. an email message-id) to dedup re-ingestion. `tags` and `entities` are free-form and help recall.
@@ -24,7 +24,7 @@ Do **not** write trivia, single-turn task state, or things he obviously already 
 Before answering anything that references past context — "as I told you", "remember when", "what was that thing about X" — call `kb_recall` first. It does semantic search, so phrase the query the way the user would, not the way the insight was originally stored.
 
 ```text
-kb_recall(query="what's Caroline allergic to", k=5)
+kb_recall(query="what's Household member allergic to", k=5)
 ```
 
 Returns `{ insights: [{ id, text, source, source_id?, tags?, entities?, category?, importance? }, ...] }`. Quote them naturally in your reply (don't paste the raw row); cite the source if relevant ("from your message yesterday…", "from the photo you sent…").

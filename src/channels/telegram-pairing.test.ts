@@ -70,10 +70,12 @@ describe('createPairing', () => {
     expect(r.status).toBe('pending');
   });
 
-  it('does not collide with active codes', async () => {
+  it('does not collide with active codes (uses distinct intents to keep all codes pending)', async () => {
     const codes = new Set<string>();
+    // Use distinct folder-based intents so no pairing supersedes another —
+    // all 20 codes stay in the active set, exercising deduplication properly.
     for (let i = 0; i < 20; i++) {
-      const r = await createPairing('main');
+      const r = await createPairing({ kind: 'new-agent', folder: `folder-${i}` });
       expect(codes.has(r.code)).toBe(false);
       codes.add(r.code);
     }
