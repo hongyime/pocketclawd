@@ -111,7 +111,8 @@
     "overrides": {
       "music-metadata": "11.16.0",
       "axios": "1.20.0",
-      "brace-expansion@<2": "1.1.21"
+      "brace-expansion@<2": "1.1.21",
+      "fast-uri": "3.1.7"
     }
   }
 }
