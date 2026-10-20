@@ -63,7 +63,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set Up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
 
@@ -90,7 +90,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set Up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
 
